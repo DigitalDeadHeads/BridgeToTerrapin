@@ -1,24 +1,23 @@
 name: DigitalDeadHeads Autonomous Agent
 on:
-  workflow_dispatch: # This allows you to click a button to run it manually
+  push:
+    branches:
+      - main
+  workflow_dispatch:
   schedule:
-    - cron: '20 16 * * *' # This runs it automatically at 4:20 PM daily
+    - cron: '20 16 * * *'
 
 jobs:
-  build:
+  run_agent:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
+      - uses: actions/checkout@v3
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
-
-      - name: Install dependencies
+      - name: Install Dependencies
         run: pip install google-generativeai
-
       - name: Run Gemini Agent
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
