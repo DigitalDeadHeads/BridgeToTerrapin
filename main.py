@@ -1,3 +1,4 @@
+# DigitalDeadHeads Agent v1.0
 import os
 import google.generativeai as genai
 
