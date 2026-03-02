@@ -10,7 +10,7 @@ if not api_key:
     print("Error: GEMINI_API_KEY not found in GitHub Secrets.")
 else:
     genai.configure(api_key=api_key)
-    model = genai.GenerativeModel('gemini-2.0-flash')
+    model = genai.GenerativeModel('gemini-2.5-flash')
 
     def agent_think_tank():
         # This is the "Instruction" for your autonomous agent
